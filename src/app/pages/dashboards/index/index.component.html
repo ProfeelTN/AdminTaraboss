@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-xl-8">
+        <div>
+            <div class="row gy-4">
+                <div class="col-sm-4 border-end-sm">
+                    <div class="text-center">
+                        <p class="text-uppercase fw-medium text-muted text-truncate fs-md">Total Sessions</p>
+                        <h4 class="fw-semibold mb-3"><span class="counter-value" [countUp]="476.32" [options]="option"></span>k </h4>
+                        <div class="d-flex align-items-center justify-content-center gap-2">
+                            <h5 class="text-success fs-xs mb-0">
+                                <i class="ri-arrow-right-up-line fs-sm align-middle"></i> +19.07 %
+                            </h5>
+                            <p class="text-muted mb-0">than last week</p>
+                        </div>
+                    </div><!-- end card -->
+                </div>
+                <div class="col-sm-4 border-end-sm">
+                    <div class="text-center">
+                        <p class="text-uppercase fw-medium text-muted text-truncate fs-md">Avg. Visit Duration</p>
+                        <h4 class="fw-semibold mb-3"><span class="counter-value" [countUp]="1.57" [options]="option">0</span>s </h4>
+                        <div class="d-flex align-items-center justify-content-center gap-2">
+                            <h5 class="text-success fs-xs mb-0">
+                                <i class="ri-arrow-right-up-line fs-sm align-middle"></i> +19.07 %
+                            </h5>
+                            <p class="text-muted mb-0">than last week</p>
+                        </div>
+                    </div><!-- end card -->
+                </div>
+                <div class="col-sm-4">
+                    <div class="text-center">
+                        <p class="text-uppercase fw-medium text-muted text-truncate fs-md">Impressions</p>
+                        <h4 class="fw-semibold mb-3"><span class="counter-value" [countUp]="2368">0</span>k </h4>
+                        <div class="d-flex align-items-center justify-content-center gap-2">
+                            <h5 class="text-success fs-xs mb-0">
+                                <i class="ri-arrow-right-up-line fs-sm align-middle"></i> +19.07 %
+                            </h5>
+                            <p class="text-muted mb-0">than last week</p>
+                        </div>
+                    </div><!-- end card -->
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <div class="mx-n4">
+                    <div id="performance_overview" class="apex-charts" dir="ltr">
+                        <apx-chart [series]="performanceChart.series" [chart]="performanceChart.chart" [stroke]="performanceChart.stroke" [plotOptions]="performanceChart.plotOptions" [dataLabels]="performanceChart.dataLabels" [legend]="performanceChart.legend" [grid]="performanceChart.grid" [yaxis]="performanceChart.yaxis" [xaxis]="performanceChart.xaxis" [colors]="performanceChart.colors" dir="ltr"></apx-chart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                @for (data of sources; track $index) {
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body p-3 d-flex gap-3">
+                            <div class="flex-shrink-0">
+                                <div class="avatar-sm">
+                                    <div class="avatar-title bg-body-secondary text-{{data.logocolor}} rounded fs-3xl">
+                                        <i class="ti ti-{{data.logo}}"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <p class="text-muted mb-2">{{data.platform}} <span class="badge bg-{{data.badge.color}}-subtle text-{{data.badge.color}}"><i class="ti ti-arrow-{{data.badge.direction}}"></i> {{data.badge.value}}</span></p>
+                                <h6 class="fw-semibold mb-0"><span class="counter-value" [countUp]="data.visitors.count"></span>{{data.visitors.unit}} <small class="text-muted fw-normal">Visitors</small></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>}<!--end col-->
+            </div><!--end row-->
+        </div>
+    </div><!--end col-->
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+                <app-apex-pie></app-apex-pie>
+            </div>
+            <div class="col-sm-7">
+                <app-apex-line></app-apex-line>
+            </div>
+            <div class="col-sm-12">
+                <app-apex-radar></app-apex-radar>
+            </div>
+        </div>
+    </div>
+    

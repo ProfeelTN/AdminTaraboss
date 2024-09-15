@@ -1,0 +1,31 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="utilisateurs" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Statistique des utilisateurs </h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <apx-chart 
+                    [series]="zoomableTimeseriesChart.series || []" 
+                    [chart]="zoomableTimeseriesChart.chart || { type: 'line' }" 
+                    [markers]="zoomableTimeseriesChart.markers || {}" 
+                    [dataLabels]="zoomableTimeseriesChart.dataLabels || {}" 
+                    [stroke]="zoomableTimeseriesChart.stroke || {}" 
+                    [colors]="zoomableTimeseriesChart.colors || []" 
+                    [title]="zoomableTimeseriesChart.title || {}" 
+                    [xaxis]="zoomableTimeseriesChart.xaxis || {}" 
+                    [yaxis]="zoomableTimeseriesChart.yaxis || {}" 
+                    [tooltip]="zoomableTimeseriesChart.tooltip || {}"
+                    dir="ltr">
+                </apx-chart>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->

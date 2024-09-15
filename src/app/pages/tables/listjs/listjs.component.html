@@ -1,0 +1,51 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Listes des Candidatures" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+<div class="row">
+    <div class="col-xl-8">
+      <div class="card">
+        <div class="candidature-list">
+          <table>
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Offre</th>
+                <th>Cv</th>
+                <th>Actions</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let candidature of paginatedCandidatures">
+                <td>{{ candidature.firstName || 'N/A' }}</td>
+                <td>{{ candidature.lastName || 'N/A' }}</td>
+                <td>{{ candidature.email || 'N/A' }}</td>
+                <td>{{ candidature.offreTitle || 'N/A' }}</td>
+                <td><a href="{{candidature.resume}}">CV <i class="icofont-eye-alt"></i></a></td>
+                <td>
+                  <button (click)="candidature.id !== undefined && refuseCandidature(candidature.id)">Refus</button>
+                  <button (click)="candidature.id !== undefined && acceptCandidature(candidature.id)">Accepte</button>
+                </td>
+                <td>{{ candidature.statut || 'N/A' }}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- Pagination Controls -->
+        <div class="pagination-controls">
+          <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+          <span>Page {{ currentPage }} of {{ totalPages }}</span>
+          <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+        </div>
+  
+        <div class="card-body">
+          <p class="text-muted">Use data attributes and other custom attributes as keys</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

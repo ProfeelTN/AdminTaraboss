@@ -1,0 +1,23 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Offres" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Statistique des Candidatures par Offre</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <apx-chart *ngIf="basicRadarChart"
+                           [series]="basicRadarChart.series" 
+                           [chart]="basicRadarChart.chart" 
+                           [xaxis]="basicRadarChart.xaxis"
+                           [stroke]="basicRadarChart.stroke"
+                           [markers]="basicRadarChart.markers" 
+                           dir="ltr"></apx-chart>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Liste des Offres" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <!-- <div class="search-box d-inline-block mb-2">
+          <input type="text" class="form-control search" placeholder="Search..." [(ngModel)]="service.searchTerm">
+          <i class="ri-search-line search-icon"></i>
+        </div> -->
+
+        <div class="table-responsive">
+          <table class="table table-gridjs">
+            <thead>
+              <tr>
+                <!-- <th class="gridjs-th sort" sortable="id" (sort)="onSort($event)">ID</th> -->
+                <th class="gridjs-th sort" sortable="company" (sort)="onSort($event)">Entreprise</th>
+                <th class="gridjs-th sort" sortable="location" (sort)="onSort($event)">Location</th>
+                <th class="gridjs-th sort" sortable="poste" (sort)="onSort($event)">Poste</th>
+                <th class="gridjs-th sort" sortable="createdAt" (sort)="onSort($event)">Date de création</th>
+                <th class="gridjs-th sort">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let offre of offres; let i = index">
+                <td class="gridjs-td">{{ offre.company }}</td>
+                <td class="gridjs-td">{{ offre.location }}</td>
+                <td class="gridjs-td">{{ offre.title }}</td>
+                <td class="gridjs-td">{{ offre.createdAt | date:'shortDate' }}</td>
+                <td class="gridjs-td">
+                <button class="btn btn-danger bg-gradient" (click)="onDeleteOffre(offre.id ?? 0)">Supprimer</button>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row justify-content-md-between align-items-md-center">
+          <div class="col-sm-12 col-md-5">
+            <div class="offreTables_info mb-2" id="tickets-table_info" role="status" aria-live="polite">
+              Showing {{ service.startIndex }} to {{ service.endIndex }} of {{ service.totalRecords }} entries
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div *ngIf="gridjsList$ | async as gridjsList" class="col-sm-12 col-md-5">
+            <div class="text-md-right float-md-end gridjs-pagination">
+              <pagination [totalItems]="(total$ | async)!" [(ngModel)]="service.page" [itemsPerPage]="service.pageSize"></pagination>
+            </div>
+          </div>
+          <!-- End Pagination -->
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card -->
+  </div>
+  <!-- end col -->
+</div>
+<!-- end row -->

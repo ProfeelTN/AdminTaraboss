@@ -1,0 +1,19 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Candidatures" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Candidature par poste</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <apx-chart [series]="simplePieChart.series" [chart]="simplePieChart.chart" [labels]="simplePieChart.labels" [legend]="simplePieChart.legend" [dataLabels]="simplePieChart.dataLabels" [responsive]="simplePieChart.responsive" [colors]="simplePieChart.colors" dir="ltr"></apx-chart>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+</div>
+<!-- end row -->
