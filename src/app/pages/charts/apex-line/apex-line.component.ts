@@ -46,7 +46,6 @@ export class ApexLineComponent implements OnInit {
   ngOnInit(): void {
     // Fetch user data and set up the chart
     this.authService.retrieveUsers().subscribe(users => {
-    console.log('Received users:', users); // Log the user data
     this.setupChart(users);
     });
   }

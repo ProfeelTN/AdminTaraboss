@@ -23,14 +23,12 @@ export class BasicComponent {
 
   getAllUsers(){
     this.userService.getAllUsers().subscribe((response: any) => {
-      console.log(response);
       this.users = response;
       });
   }
   deleteUser(id:number){
     this.userService.deleteUser(id).subscribe(
       (response: any) => {
-        console.log(response);  
         this.notif.showSuccess("utilisateur supprimée ","Suppression")
         this.getAllUsers();
         

@@ -71,13 +71,11 @@ export class GridjsComponent {
     this.offreService.getAllOffres().subscribe({
       next: (offres) => {
         this.offres = offres; // Store the fetched offers
-        console.log('Offres:', this.offres);
 
         // Trigger the service to search and update the grid data
         this.service.searchTerm = ''; // Reset or set search term if needed
       },
       error: (err) => {
-        console.error('Error loading offres:', err);
       }
     });
   }

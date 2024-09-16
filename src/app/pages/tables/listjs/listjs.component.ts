@@ -46,7 +46,6 @@ export class ListjsComponent {
         this.candidatures = candidatures;
         this.totalPages = Math.ceil(this.candidatures.length / this.itemsPerPage);
         this.updatePaginatedCandidatures();
-        console.log("candidatures",candidatures)
       },
       error: (err) => {
         console.error('Error loading candidatures:', err);
@@ -77,7 +76,6 @@ export class ListjsComponent {
   acceptCandidature(candidatureId: number) {
     this.candidatureService.acceptCandidature(candidatureId).subscribe(
       response => {
-        console.log('Response:', response);
         if (response === 'Candidature accepted successfully') {
           // this.notifService.showSuccess('Candidature accepted successfully', 'Success');
           window.location.reload();
@@ -90,7 +88,6 @@ export class ListjsComponent {
 
       },
       error => {
-        console.error('Error accepting candidature:', error);
         // this.notifService.showError('Failed to accept candidature', 'Error');
       }
       
@@ -104,7 +101,6 @@ export class ListjsComponent {
   refuseCandidature(candidatureId: number) {
     this.candidatureService.refuseCandidature(candidatureId).subscribe(
       response => {
-        console.log('Response:', response);
         this.notifService.showSuccess('Candidature refused successfully', 'Success');
         this.route.navigate(["/tables/listjs"]).then(()=>{
           window.location.reload();
@@ -112,7 +108,6 @@ export class ListjsComponent {
       },
       
       error => {
-        console.error('Error refusing candidature:', error);
         this.notifService.showError('Failed to refuse candidature', 'Error');
       }
     );

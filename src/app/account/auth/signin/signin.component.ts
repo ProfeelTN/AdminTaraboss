@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
+import { NotificationService } from 'src/app/core/services/Notifucation.service';
 import { AuthenticateRequest } from 'src/app/Models/Authenticate Request';
 
 @Component({
@@ -12,7 +13,7 @@ export class SigninComponent {
   email?: string;
   password?: string;
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authService: AuthenticationService, private router: Router,private notifService:NotificationService) { }
 
   ngOnInit(): void { }
 
@@ -25,10 +26,8 @@ export class SigninComponent {
 
     this.authService.login(request).subscribe({
       next: (res: any) => {
-        // console.log("response", res);
-        // console.log("Message ==> ", res.body.message);
         if(res.body.message=="Invalid email or password"){
-          // this.notifService.showError("Erreur", "Email ou mot de passe incorrect.");
+          this.notifService.showError("Erreur", "Email ou mot de passe incorrect.");
         }
         if (res.body.status === 200) {
           localStorage.setItem('logged', "true");
@@ -38,24 +37,20 @@ export class SigninComponent {
           // Retrieve the user information
           this.authService.retrieveUserConnected(res.body.body.token).subscribe({
             next: (user: any) => {
-              // console.log("User connected", user);
               const role = user.role;
               if (role) {
                 this.authService.setRole(role);
               }
-              // console.log('Role after login:', role);
               
               this.router.navigate(['/']).then(() => window.location.reload());
               
             },
             error: (err) => {
-              // console.error('Error retrieving user connected:', err);
             }
           });
         }
       },
       error: (err) => {
-        // console.error('Authentication failed:', err);
       },
     });
   }

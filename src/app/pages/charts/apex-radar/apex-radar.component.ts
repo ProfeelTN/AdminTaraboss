@@ -25,7 +25,6 @@ export class ApexRadarComponent implements OnInit {
   private fetchOffres() {
     this.offreservice.getAllOffres().subscribe((data: Offre[]) => {
       this.offres = data;
-      console.log(this.offres)
       if (this.offres.length) {
         this.buildRadarChart(this.offres);
         
@@ -49,7 +48,6 @@ export class ApexRadarComponent implements OnInit {
 
         // Use the candidatureCount field
         const candidatureCount = offre.candidatureCount; // This should now be populated correctly
-        console.log(`Candidature Count for "${offre.title}": ${candidatureCount}`);
         candidatureCounts.push(candidatureCount);
     });
 
